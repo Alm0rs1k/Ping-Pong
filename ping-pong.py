@@ -3,8 +3,10 @@ from pygame import *
 fps = 60
 game = True
 clock= time.Clock()
+win_height = 500
+win_width = 700
 window = display.set_mode((700, 500))
-display.set_caption('Ding Dong')
+display.set_caption('Ping Pong')
 background = transform.scale(image.load('phone.png'), (700, 500))
 
 class GameSprite(sprite.Sprite):
@@ -23,17 +25,17 @@ class Player(GameSprite):
         keys = key.get_pressed()
         if keys[K_w] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[K_s] and self.rect.y < 5:
+        if keys[K_s] and self.rect.y < win_height - 80:
             self.rect.y += self.speed
     def update_r(self):
         keys = key.get_pressed()
         if keys[K_UP] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[K_DOWN] and self.rect.y < 5:
+        if keys[K_DOWN] and self.rect.y < win_height - 80:
             self.rect.y += self.speed
 
-rocket_1 = Player("gui.png", 10, 10, 50, 100, 10)
-rocket_2 = Player("gui.png", 630, 10, 50, 100, 10)
+rocket_1 = Player("racket.png", 30, 10, 10, 100, 10)
+rocket_2 = Player("racket.png", 650, 10, 10, 100, 10)
 
 while game:
     for e in event.get():
